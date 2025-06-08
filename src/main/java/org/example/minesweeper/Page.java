@@ -41,7 +41,8 @@ public class Page implements Initializable {
     private boolean started = false, done = false;
     static final int boxSize = 20;
     private final MediaPlayer click = new MediaPlayer(new Media(getClass().getResource("click.wav").toString())),
-            boom = new MediaPlayer(new Media(getClass().getResource("boom.wav").toString()));
+            boom = new MediaPlayer(new Media(getClass().getResource("boom.wav").toString())),
+            clap = new MediaPlayer(new Media(getClass().getResource("clap.wav").toString()));
     private final Timeline timer = new Timeline(new KeyFrame(Duration.seconds(1), _ -> {
         if(time < 999) time++;
         syncTimer();
@@ -185,6 +186,9 @@ public class Page implements Initializable {
         time = 0;
         syncTimer();
         started = done = false;
+        click.stop();
+        boom.stop();
+        clap.stop();
     }
 
     public void clickFace() {
@@ -216,6 +220,8 @@ public class Page implements Initializable {
     private void win() {
         clear();
         face.setImage(faces[2]);
+        clap.stop();
+        clap.play();
     }
 
     private void lose() {

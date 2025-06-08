@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
-    private final int rows = 30, cols = 30, bombs = 100;
+    private final int rows = 30, cols = 30, bombs = 1;
 
     @Override
     public void start(Stage stage) throws IOException {
